@@ -4,8 +4,8 @@
 
 import jax
 import jax.numpy as jnp
-import somap as smp
 
+import somap as smp
 from tests import inputs_data
 
 
@@ -26,7 +26,7 @@ def test_make_step():
 
     # Iterates over the toy dataset
     for i in range(0, inputs_data["bu_v"].shape[0]):
-        input_data = jax.tree_map(lambda x: x[i], inputs_data)
+        input_data = jax.tree.map(lambda x: x[i], inputs_data)
         model, aux = model(input_data)
         model2, aux = smp.make_step(model2, input_data)
 
@@ -40,7 +40,7 @@ def test_make_steps():
 
     # Iterates over the toy dataset
     for i in range(0, inputs_data["bu_v"].shape[0]):
-        input_data = jax.tree_map(lambda x: x[i], inputs_data)
+        input_data = jax.tree.map(lambda x: x[i], inputs_data)
         model, aux = model(input_data)
 
     model2, aux = smp.make_steps(model2, inputs_data)
