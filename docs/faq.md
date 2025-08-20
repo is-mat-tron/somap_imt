@@ -23,7 +23,7 @@ for i in range(0, epoch):
     auxs.append(aux)
 
 # Concatenate the 'aux' outputs if there are several
-aux = jax.tree_util.tree_map(
+aux = jax.tree.map(
     lambda x, *y: np.concatenate((x, *y), axis=0),
     *auxs,
     is_leaf=lambda x: isinstance(x, list),

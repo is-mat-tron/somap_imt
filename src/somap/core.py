@@ -215,7 +215,7 @@ def make_step(model: AbstractSom, input: InputData):
     Returns:
         A tuple with the new SOM model and the auxilary data.
     """
-    input = jax.tree_map(lambda x: jnp.asarray(x), input)
+    input = jax.tree.map(lambda x: jnp.asarray(x), input)
     return model(input)
 
 
@@ -232,5 +232,5 @@ def make_steps(model: AbstractSom, inputs):
     Returns:
         A tuple with the new SOM model and the auxilary data.
     """
-    inputs = jax.tree_map(lambda x: jnp.asarray(x), inputs)
+    inputs = jax.tree.map(lambda x: jnp.asarray(x), inputs)
     return filter_scan(make_step, model, inputs)

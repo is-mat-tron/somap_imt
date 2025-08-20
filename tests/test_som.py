@@ -4,8 +4,8 @@
 
 import jax
 import jax.numpy as jnp
-import somap as smp
 
+import somap as smp
 from tests import inputs_data
 
 
@@ -28,7 +28,7 @@ def test_som():
 
     # Iterates over the toy dataset
     for i in range(0, inputs_data["bu_v"].shape[0]):
-        input_data = jax.tree_map(lambda x: x[i], inputs_data)
+        input_data = jax.tree.map(lambda x: x[i], inputs_data)
         model, aux = model(input_data)
 
     assert jnp.min(model.w_bu) >= 0 and jnp.max(model.w_bu) <= 1
@@ -40,7 +40,7 @@ def test_static_ksom():
 
     # Iterates over the toy dataset
     for i in range(0, inputs_data["bu_v"].shape[0]):
-        input_data = jax.tree_map(lambda x: x[i], inputs_data)
+        input_data = jax.tree.map(lambda x: x[i], inputs_data)
         model, aux = model(input_data)
 
     assert jnp.min(model.w_bu) >= 0 and jnp.max(model.w_bu) <= 1
@@ -54,7 +54,7 @@ def test_ksom():
 
     # Iterates over the toy dataset
     for i in range(0, inputs_data["bu_v"].shape[0]):
-        input_data = jax.tree_map(lambda x: x[i], inputs_data)
+        input_data = jax.tree.map(lambda x: x[i], inputs_data)
         model, aux = model(input_data)
 
     assert jnp.min(model.w_bu) >= 0 and jnp.max(model.w_bu) <= 1
@@ -66,7 +66,7 @@ def test_dsom():
 
     # Iterates over the toy dataset
     for i in range(0, inputs_data["bu_v"].shape[0]):
-        input_data = jax.tree_map(lambda x: x[i], inputs_data)
+        input_data = jax.tree.map(lambda x: x[i], inputs_data)
         model, aux = model(input_data)
 
     assert jnp.min(model.w_bu) >= 0 and jnp.max(model.w_bu) <= 1
